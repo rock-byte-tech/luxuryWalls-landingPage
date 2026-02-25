@@ -1,4 +1,4 @@
----
+﻿---
 interface Props {
   eyebrow: string;
   title: string;
@@ -12,13 +12,15 @@ const alignmentClasses =
 ---
 
 <div class={alignmentClasses}>
-  <p class="mb-3 text-xs font-semibold tracking-[0.26em] uppercase text-[var(--color-cyan-electric)]">
+  <p class="mb-3 text-xs font-semibold tracking-[0.26em] uppercase text-cyan-electric">
     {eyebrow}
   </p>
-  <h2 class="font-[var(--font-header)] text-3xl leading-tight text-white md:text-5xl">
+  <h2 class="font-header text-3xl leading-tight text-white md:text-5xl">
     {title}
   </h2>
-  <p class="mt-4 text-sm leading-relaxed text-[var(--color-smoke-white)]/85 md:text-base">
+  <p class="mt-4 text-sm leading-relaxed text-smoke-white/85 md:text-base">
     {description}
   </p>
 </div>
+
+

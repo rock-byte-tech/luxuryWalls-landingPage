@@ -1,39 +1,93 @@
----
+﻿---
 import siteContent from "../data/site-content.json";
 import GlowButton from "../components/GlowButton.astro";
 
 const { brand, hero } = siteContent;
 ---
 
-<section id="home" class="relative isolate flex min-h-screen items-center overflow-hidden bg-[var(--color-ebony)]">
+<section id="home" class="relative isolate flex min-h-screen items-center overflow-hidden bg-ebony">
   <div
     class="absolute inset-0 bg-cover bg-center opacity-30"
     style={`background-image: url('${hero.backgroundImage}')`}
   ></div>
-  <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/80 to-[var(--color-ebony)]"></div>
-  <div class="absolute -left-24 top-1/3 h-72 w-72 rounded-full bg-[var(--color-cyan-electric)]/20 blur-3xl"></div>
-  <div class="absolute -right-20 bottom-1/4 h-64 w-64 rounded-full bg-[var(--color-gold-luxury)]/15 blur-3xl"></div>
+  <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/80 to-ebony"></div>
+  <div class="absolute -left-24 top-1/3 h-72 w-72 rounded-full bg-cyan-electric/20 blur-3xl"></div>
+  <div class="absolute -right-20 bottom-1/4 h-64 w-64 rounded-full bg-gold-luxury/15 blur-3xl"></div>
 
   <div class="relative z-10 mx-auto w-full max-w-7xl px-6 pb-20 pt-8 sm:px-8 lg:px-12">
-    <header class="mb-20 flex items-center justify-between">
-      <a href="#home" class="inline-flex items-center gap-3">
-        <img src={brand.logo} alt={`${brand.name} logo`} class="h-16 w-auto object-contain sm:h-20" />
-      </a>
-      <nav class="hidden items-center gap-8 text-xs font-medium tracking-[0.18em] uppercase text-white/80 md:flex">
-        <a href="#services" class="transition hover:text-[var(--color-cyan-electric)]">Services</a>
-        <a href="#instagram" class="transition hover:text-[var(--color-cyan-electric)]">Instagram</a>
-        <a href="#contact" class="transition hover:text-[var(--color-cyan-electric)]">Contact</a>
+    <header class="mb-10 md:mb-20">
+      <div class="flex items-center justify-between">
+        <a href="#home" class="inline-flex items-center gap-3">
+          <img src={brand.logo} alt={`${brand.name} logo`} class="h-16 w-auto object-contain sm:h-20" />
+        </a>
+
+        <div class="flex items-center gap-4">
+          <nav class="hidden items-center gap-8 text-xs font-medium tracking-[0.18em] uppercase text-white/80 md:flex">
+            <a href="#services" class="transition hover:text-cyan-electric">Services</a>
+            <a href="#instagram" class="transition hover:text-cyan-electric">Instagram</a>
+            <a href="#contact" class="transition hover:text-cyan-electric">Contact</a>
+          </nav>
+
+          <button
+            type="button"
+            class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-cyan-electric/50 text-cyan-electric transition hover:border-cyan-electric hover:shadow-[0_0_16px_rgba(0,195,227,0.35)] md:hidden"
+            aria-label="Open mobile menu"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+            data-mobile-menu-button
+          >
+            <span class="sr-only">Toggle navigation menu</span>
+            <span class="relative block h-4 w-5">
+              <span class="absolute left-0 top-0 h-0.5 w-5 bg-current"></span>
+              <span class="absolute left-0 top-[7px] h-0.5 w-5 bg-current"></span>
+              <span class="absolute left-0 top-[14px] h-0.5 w-5 bg-current"></span>
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <nav id="mobile-menu" class="mobile-menu fixed inset-0 z-[1000] md:hidden" data-mobile-menu data-state="closed" aria-hidden="true">
+        <div class="mobile-menu-backdrop absolute inset-0 bg-black/75 backdrop-blur-md" data-mobile-menu-backdrop></div>
+
+        <div class="mobile-menu-panel relative flex h-full w-full flex-col">
+          <div class="flex justify-end p-6">
+            <button
+              type="button"
+              class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-cyan-electric/50 text-cyan-electric transition hover:border-cyan-electric hover:shadow-[0_0_16px_rgba(0,195,227,0.35)]"
+              aria-label="Close mobile menu"
+              data-mobile-menu-close
+            >
+              <span class="sr-only">Close navigation menu</span>
+              <span class="relative block h-4 w-4">
+                <span class="absolute left-0 top-1/2 h-0.5 w-4 -translate-y-1/2 rotate-45 bg-current"></span>
+                <span class="absolute left-0 top-1/2 h-0.5 w-4 -translate-y-1/2 -rotate-45 bg-current"></span>
+              </span>
+            </button>
+          </div>
+
+          <ul class="flex flex-1 flex-col items-center justify-center gap-6 px-6 text-lg font-semibold tracking-[0.2em] uppercase text-white">
+            <li>
+              <a href="#services" class="block rounded-lg px-6 py-3 transition hover:text-cyan-electric">Services</a>
+            </li>
+            <li>
+              <a href="#instagram" class="block rounded-lg px-6 py-3 transition hover:text-cyan-electric">Instagram</a>
+            </li>
+            <li>
+              <a href="#contact" class="block rounded-lg px-6 py-3 transition hover:text-cyan-electric">Contact</a>
+            </li>
+          </ul>
+        </div>
       </nav>
     </header>
 
-    <div class="max-w-3xl">
-      <p class="mb-5 text-xs font-semibold tracking-[0.3em] uppercase text-[var(--color-gold-luxury)]">
+    <div class="max-w-3xl" data-reveal>
+      <p class="mb-5 text-xs font-semibold tracking-[0.3em] uppercase text-gold-luxury">
         {hero.eyebrow}
       </p>
-      <h1 class="font-[var(--font-header)] text-4xl leading-tight text-white sm:text-5xl md:text-6xl">
+      <h1 class="font-header text-4xl leading-tight text-white sm:text-5xl md:text-6xl">
         {hero.title}
       </h1>
-      <p class="mt-6 max-w-2xl text-base leading-relaxed text-[var(--color-smoke-white)]/90 sm:text-lg">
+      <p class="mt-6 max-w-2xl text-base leading-relaxed text-smoke-white/90 sm:text-lg">
         {hero.description}
       </p>
 
@@ -42,7 +96,7 @@ const { brand, hero } = siteContent;
         <GlowButton href={hero.secondaryCta.href} label={hero.secondaryCta.label} variant="gold" />
       </div>
 
-      <ul class="mt-10 grid gap-3 text-sm text-[var(--color-smoke-white)]/80 sm:grid-cols-3">
+      <ul class="mt-10 grid gap-3 text-sm text-smoke-white/80 sm:grid-cols-3">
         {
           hero.highlights.map((item) => (
             <li class="rounded-xl border border-white/10 bg-white/5 px-4 py-3 backdrop-blur-sm">{item}</li>
@@ -52,3 +106,74 @@ const { brand, hero } = siteContent;
     </div>
   </div>
 </section>
+
+<script is:inline>
+  (() => {
+    const menuButton = document.querySelector("[data-mobile-menu-button]");
+    const mobileMenu = document.querySelector("[data-mobile-menu]");
+    const menuBackdrop = document.querySelector("[data-mobile-menu-backdrop]");
+    const closeButton = document.querySelector("[data-mobile-menu-close]");
+    if (!menuButton || !mobileMenu) return;
+
+    const transitionMs = 360;
+    let closeTimer;
+
+    const setOpenState = (isOpen) => {
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+      mobileMenu.setAttribute("aria-hidden", String(!isOpen));
+    };
+
+    const openMenu = () => {
+      clearTimeout(closeTimer);
+      setOpenState(true);
+      document.documentElement.classList.add("menu-open");
+      mobileMenu.setAttribute("data-state", "opening");
+      requestAnimationFrame(() => {
+        mobileMenu.setAttribute("data-state", "open");
+      });
+    };
+
+    const closeMenu = () => {
+      clearTimeout(closeTimer);
+      setOpenState(false);
+      mobileMenu.setAttribute("data-state", "closing");
+      closeTimer = window.setTimeout(() => {
+        mobileMenu.setAttribute("data-state", "closed");
+        document.documentElement.classList.remove("menu-open");
+      }, transitionMs);
+    };
+
+    menuButton.addEventListener("click", () => {
+      const isOpen = menuButton.getAttribute("aria-expanded") === "true";
+      if (isOpen) {
+        closeMenu();
+        return;
+      }
+      openMenu();
+    });
+
+    mobileMenu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+
+    menuBackdrop?.addEventListener("click", closeMenu);
+    closeButton?.addEventListener("click", closeMenu);
+
+    window.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && menuButton.getAttribute("aria-expanded") === "true") {
+        closeMenu();
+      }
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth >= 768) {
+        clearTimeout(closeTimer);
+        setOpenState(false);
+        mobileMenu.setAttribute("data-state", "closed");
+        document.documentElement.classList.remove("menu-open");
+      }
+    });
+  })();
+</script>
+
+
