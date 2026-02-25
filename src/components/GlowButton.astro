@@ -1,0 +1,21 @@
+---
+interface Props {
+  href: string;
+  label: string;
+  variant?: "cyan" | "gold";
+}
+
+const { href, label, variant = "cyan" } = Astro.props;
+
+const baseClasses =
+  "inline-flex items-center justify-center rounded-full border px-6 py-3 text-sm font-semibold tracking-[0.12em] uppercase transition duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-ebony)]";
+
+const variantClasses =
+  variant === "gold"
+    ? "border-[var(--color-gold-luxury)] text-[var(--color-gold-luxury)] hover:bg-[var(--color-gold-luxury)]/10 hover:shadow-[0_0_20px_rgba(212,175,55,0.35)] focus-visible:ring-[var(--color-gold-luxury)]"
+    : "border-[var(--color-cyan-electric)] text-[var(--color-cyan-electric)] hover:bg-[var(--color-cyan-electric)]/10 hover:shadow-[0_0_24px_rgba(0,195,227,0.45)] focus-visible:ring-[var(--color-cyan-electric)]";
+---
+
+<a href={href} class={`${baseClasses} ${variantClasses}`}>
+  {label}
+</a>

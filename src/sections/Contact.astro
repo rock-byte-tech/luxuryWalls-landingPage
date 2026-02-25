@@ -1,0 +1,79 @@
+---
+import siteContent from "../data/site-content.json";
+import SectionTitle from "../components/SectionTitle.astro";
+
+const { contact, services } = siteContent;
+---
+
+<section id="contact" class="bg-[var(--color-ebony)] py-24">
+  <div class="mx-auto grid max-w-7xl gap-10 px-6 sm:px-8 lg:grid-cols-2 lg:px-12">
+    <div>
+      <SectionTitle eyebrow={contact.eyebrow} title={contact.title} description={contact.description} />
+
+      <div class="mt-8 space-y-4 text-sm text-[var(--color-smoke-white)]/85">
+        <p><span class="text-[var(--color-gold-luxury)]">Phone:</span> {contact.phone}</p>
+        <p><span class="text-[var(--color-gold-luxury)]">Email:</span> {contact.email}</p>
+        <p><span class="text-[var(--color-gold-luxury)]">Address:</span> {contact.address}</p>
+        <p><span class="text-[var(--color-gold-luxury)]">Hours:</span> {contact.hours}</p>
+      </div>
+    </div>
+
+    <form class="rounded-3xl border border-[var(--color-gold-luxury)]/40 bg-white/[0.02] p-6 sm:p-8">
+      <div class="grid gap-4">
+        <label class="text-xs tracking-[0.14em] uppercase text-[var(--color-gold-luxury)]">{contact.form.nameLabel}</label>
+        <input
+          type="text"
+          name="name"
+          placeholder="Your full name"
+          class="rounded-xl border border-[var(--color-gold-luxury)]/45 bg-transparent px-4 py-3 text-sm text-white outline-none transition focus:border-[var(--color-gold-luxury)]"
+        />
+
+        <label class="text-xs tracking-[0.14em] uppercase text-[var(--color-gold-luxury)]">{contact.form.emailLabel}</label>
+        <input
+          type="email"
+          name="email"
+          placeholder="you@email.com"
+          class="rounded-xl border border-[var(--color-gold-luxury)]/45 bg-transparent px-4 py-3 text-sm text-white outline-none transition focus:border-[var(--color-gold-luxury)]"
+        />
+
+        <label class="text-xs tracking-[0.14em] uppercase text-[var(--color-gold-luxury)]">{contact.form.phoneLabel}</label>
+        <input
+          type="tel"
+          name="phone"
+          placeholder="+1 (___) ___-____"
+          class="rounded-xl border border-[var(--color-gold-luxury)]/45 bg-transparent px-4 py-3 text-sm text-white outline-none transition focus:border-[var(--color-gold-luxury)]"
+        />
+
+        <label class="text-xs tracking-[0.14em] uppercase text-[var(--color-gold-luxury)]">{contact.form.serviceLabel}</label>
+        <select
+          name="service"
+          class="rounded-xl border border-[var(--color-gold-luxury)]/45 bg-transparent px-4 py-3 text-sm text-white outline-none transition focus:border-[var(--color-gold-luxury)]"
+        >
+          <option value="" class="bg-[var(--color-ebony)] text-white">Select a service</option>
+          {
+            services.map((service) => (
+              <option value={service.id} class="bg-[var(--color-ebony)] text-white">
+                {service.title}
+              </option>
+            ))
+          }
+        </select>
+
+        <label class="text-xs tracking-[0.14em] uppercase text-[var(--color-gold-luxury)]">{contact.form.messageLabel}</label>
+        <textarea
+          name="message"
+          rows={4}
+          placeholder="Share your space goals, materials, and target completion date."
+          class="rounded-xl border border-[var(--color-gold-luxury)]/45 bg-transparent px-4 py-3 text-sm text-white outline-none transition focus:border-[var(--color-gold-luxury)]"
+        ></textarea>
+
+        <button
+          type="submit"
+          class="mt-2 inline-flex w-fit rounded-full border border-[var(--color-gold-luxury)] px-6 py-3 text-xs font-semibold tracking-[0.18em] uppercase text-[var(--color-gold-luxury)] transition hover:bg-[var(--color-gold-luxury)]/10 hover:shadow-[0_0_20px_rgba(212,175,55,0.28)]"
+        >
+          {contact.form.submitLabel}
+        </button>
+      </div>
+    </form>
+  </div>
+</section>

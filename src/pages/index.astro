@@ -1,17 +1,32 @@
----
+﻿---
+import "../styles/global.css";
+import siteContent from "../data/site-content.json";
+import Hero from "../sections/Hero.astro";
+import Services from "../sections/Services.astro";
+import InstaFeed from "../sections/InstaFeed.astro";
+import Contact from "../sections/Contact.astro";
+import Footer from "../sections/Footer.astro";
 
+const { meta } = siteContent;
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{meta.title}</title>
+    <meta name="description" content={meta.description} />
+  </head>
+  <body>
+    <main class="overflow-x-hidden bg-[var(--color-ebony)]">
+      <Hero />
+      <Services />
+      <InstaFeed />
+      <Contact />
+      <Footer />
+    </main>
+  </body>
 </html>

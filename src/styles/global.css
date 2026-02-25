@@ -1,0 +1,76 @@
+﻿@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700;800&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-ebony: #0a0a0a;
+  --color-cyan-electric: #00c3e3;
+  --color-gold-luxury: #d4af37;
+  --color-smoke-white: #e0e0e0;
+
+  --font-header: "Playfair Display", serif;
+  --font-body: "Montserrat", sans-serif;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--color-ebony);
+  color: var(--color-smoke-white);
+  font-family: var(--font-body);
+  scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-header);
+}
+
+.glass-panel {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+  backdrop-filter: blur(18px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+}
+
+.powered-by {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: color-mix(in srgb, var(--color-smoke-white) 74%, transparent);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.powered-link {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid color-mix(in srgb, var(--color-gold-luxury) 40%, transparent);
+  border-radius: 10px;
+  padding: 0.35rem 0.7rem;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+}
+
+.powered-link:hover {
+  border-color: color-mix(in srgb, var(--color-cyan-electric) 55%, transparent);
+  background-color: color-mix(in srgb, var(--color-cyan-electric) 10%, transparent);
+  box-shadow: 0 0 16px rgba(0, 195, 227, 0.28);
+}
+
+.powered-logo {
+  height: 20px;
+  width: auto;
+  object-fit: contain;
+}

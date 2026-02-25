@@ -1,0 +1,148 @@
+{
+  "meta": {
+    "siteName": "Luxury Walls Naples",
+    "title": "Luxury Walls Naples | Bespoke Interiors & Architectural Finishes",
+    "description": "Luxury Walls Naples designs and builds premium interiors with cinematic lighting, custom millwork, and refined architectural finishes."
+  },
+  "brand": {
+    "name": "Luxury Walls Naples",
+    "tagline": "Bespoke Luxury Interiors",
+    "logo": "/images/logo.png"
+  },
+  "hero": {
+    "eyebrow": "Naples, Florida",
+    "title": "Architectural Spaces Crafted for Legacy Living",
+    "description": "From statement walls to custom kitchens, we transform residences and commercial spaces into immersive luxury environments with precision craftsmanship.",
+    "primaryCta": {
+      "label": "Book a Private Consultation",
+      "href": "#contact"
+    },
+    "secondaryCta": {
+      "label": "Explore Our Services",
+      "href": "#services"
+    },
+    "backgroundImage": "/images/service-00.webp",
+    "highlights": [
+      "Ultra-premium finishes",
+      "Tailored design strategy",
+      "Installed by master craftsmen"
+    ]
+  },
+  "servicesSection": {
+    "eyebrow": "Signature Services",
+    "title": "Eight Disciplines. One Luxury Standard.",
+    "description": "Each service is delivered with an uncompromising attention to detail, material excellence, and lighting harmony."
+  },
+  "services": [
+    {
+      "id": "wood-panels",
+      "title": "Wood Panels",
+      "description": "Architectural wood panel systems engineered for visual depth, acoustic comfort, and timeless sophistication.",
+      "image": "/images/service-01.webp",
+      "alt": "Luxury wood wall panel installation",
+      "tags": ["Natural veneers", "Wall cladding", "Custom patterns"],
+      "href": "#contact"
+    },
+    {
+      "id": "interior-design",
+      "title": "Interior Design",
+      "description": "Spatial concepts curated around your lifestyle, balancing modern restraint with warm, refined textures.",
+      "image": "/images/service-02.webp",
+      "alt": "Modern luxury interior design concept",
+      "tags": ["Concept planning", "Material palette", "Styling direction"],
+      "href": "#contact"
+    },
+    {
+      "id": "interior-exterior-painting",
+      "title": "Interior & Exterior Painting",
+      "description": "Premium paint applications for interiors and facades with flawless finishes, clean edges, and long-term durability.",
+      "image": "/images/service-09.webp",
+      "alt": "Luxury interior and exterior painting service",
+      "tags": ["Fine finishes", "Color consultation", "Surface prep"],
+      "href": "#contact"
+    },
+    {
+      "id": "custom-kitchens-closets",
+      "title": "Custom Kitchens & Closets",
+      "description": "Tailor-made kitchens and closet systems combining elegant design, intelligent storage, and high-end craftsmanship.",
+      "image": "/images/service-06.webp",
+      "alt": "Custom luxury kitchen and closet cabinetry",
+      "tags": ["Bespoke cabinetry", "Space planning", "Premium hardware"],
+      "href": "#contact"
+    },
+    {
+      "id": "entertainment-center",
+      "title": "Entertainment Center",
+      "description": "Custom entertainment walls and media centers designed for immersive viewing and refined architectural presence.",
+      "image": "/images/service-03.webp",
+      "alt": "Luxury custom entertainment center wall",
+      "tags": ["Media integration", "Hidden wiring", "Statement design"],
+      "href": "#contact"
+    },
+    {
+      "id": "home-decor",
+      "title": "Home Decor",
+      "description": "Curated decorative solutions that elevate everyday spaces through texture, balance, and luxurious detail.",
+      "image": "/images/service-00.webp",
+      "alt": "Luxury home decor styling",
+      "tags": ["Curated styling", "Material harmony", "Luxury accents"],
+      "href": "#contact"
+    },
+    {
+      "id": "office-decor",
+      "title": "Office Decor",
+      "description": "Executive office interiors designed to project prestige, comfort, and productivity with a unified visual identity.",
+      "image": "/images/service-10.webp",
+      "alt": "Luxury office decor and finishes",
+      "tags": ["Corporate elegance", "Workspace styling", "Brand atmosphere"],
+      "href": "#contact"
+    },
+    {
+      "id": "custom-furniture",
+      "title": "Custom Furniture",
+      "description": "One-of-a-kind furniture pieces handcrafted to match your space, function, and signature aesthetic.",
+      "image": "/images/service-07.webp",
+      "alt": "Custom luxury furniture craftsmanship",
+      "tags": ["Made-to-measure", "Premium materials", "Artisanal build"],
+      "href": "#contact"
+    }
+  ],
+  "instagram": {
+    "eyebrow": "Live Portfolio",
+    "title": "Follow Our Latest Installations",
+    "description": "See daily progress, behind-the-scenes craftsmanship, and finished projects through our Instagram feed.",
+    "ctaLabel": "Open Instagram",
+    "url": "https://www.instagram.com/luxurywallsnaples/"
+  },
+  "contact": {
+    "eyebrow": "Private Inquiry",
+    "title": "Start Your Luxury Transformation",
+    "description": "Tell us about your project and preferred timeline. Our team will schedule a tailored consultation.",
+    "phone": "+1 239-571-5809",
+    "email": "contac@luxurywallsnaples.com",
+    "address": "2984 44th Terrace SW, Naples, FL 34116",
+    "hours": "Monday - Saturday | 9:00 AM - 6:00 PM",
+    "form": {
+      "nameLabel": "Full Name",
+      "emailLabel": "Email Address",
+      "phoneLabel": "Phone Number",
+      "serviceLabel": "Service of Interest",
+      "messageLabel": "Project Details",
+      "submitLabel": "Request Consultation"
+    }
+  },
+  "footer": {
+    "legal": "Licensed and insured. All rights reserved.",
+    "copyright": "Copyright 2026 Luxury Walls Naples",
+    "socials": [
+      {
+        "name": "Instagram",
+        "href": "https://www.instagram.com/luxurywallsnaples/"
+      },
+      {
+        "name": "Facebook",
+        "href": "https://www.facebook.com/p/Luxury-Walls-Ceiling-Design-100090491853933/"
+      }
+    ]
+  }
+}
