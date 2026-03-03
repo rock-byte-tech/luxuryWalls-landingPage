@@ -2,11 +2,21 @@
 import siteContent from "../data/site-content.json";
 import SectionTitle from "../components/SectionTitle.astro";
 
-const { contact, services } = siteContent;
+const { brand, contact, services } = siteContent;
 ---
 
-<section id="contact" class="bg-ebony py-24">
-  <div class="mx-auto grid max-w-7xl gap-10 px-6 sm:px-8 lg:grid-cols-2 lg:px-12">
+<section id="contact" class="relative isolate overflow-hidden bg-ebony py-24">
+  <div class="pointer-events-none absolute -right-28 top-1/2 z-0 -translate-y-1/2 sm:-right-20">
+    <img
+      src={brand.logo}
+      alt=""
+      aria-hidden="true"
+      loading="lazy"
+      class="h-[22rem] w-auto max-w-none opacity-[0.06] blur-[1px] sm:h-[30rem] lg:h-[34rem]"
+    />
+  </div>
+
+  <div class="relative z-10 mx-auto grid max-w-7xl gap-10 px-6 sm:px-8 lg:grid-cols-2 lg:px-12">
     <div data-reveal>
       <SectionTitle eyebrow={contact.eyebrow} title={contact.title} description={contact.description} />
 

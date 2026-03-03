@@ -2,11 +2,21 @@
 import siteContent from "../data/site-content.json";
 import SectionTitle from "../components/SectionTitle.astro";
 
-const { servicesSection, services } = siteContent;
+const { brand, servicesSection, services } = siteContent;
 ---
 
-<section id="services" class="bg-ebony py-24">
-  <div class="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
+<section id="services" class="relative isolate overflow-hidden bg-ebony py-24">
+  <div class="pointer-events-none absolute -left-28 top-1/2 z-0 -translate-y-1/2 sm:-left-20">
+    <img
+      src={brand.logo}
+      alt=""
+      aria-hidden="true"
+      loading="lazy"
+      class="h-[22rem] w-auto max-w-none opacity-[0.06] blur-[1px] sm:h-[30rem] lg:h-[34rem]"
+    />
+  </div>
+
+  <div class="relative z-10 mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
     <div data-reveal>
       <SectionTitle
         eyebrow={servicesSection.eyebrow}
@@ -22,7 +32,7 @@ const { servicesSection, services } = siteContent;
           <article
             data-reveal
             style={`--reveal-delay: ${index * 75}ms;`}
-            class="group overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] transition duration-300 hover:-translate-y-1 hover:border-cyan-electric/60 hover:shadow-[0_0_24px_rgba(0,195,227,0.18)]"
+            class="group overflow-hidden bg-[#0f0f0f] rounded-2xl border border-white/10 transition duration-300 hover:-translate-y-1 hover:border-cyan-electric/60 hover:shadow-[0_0_24px_rgba(0,195,227,0.18)]"
           >
             <div class="relative h-52 overflow-hidden">
               <img
