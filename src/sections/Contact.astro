@@ -1,6 +1,7 @@
 ﻿---
 import siteContent from "../data/site-content.json";
 import SectionTitle from "../components/SectionTitle.astro";
+import ContactForm from "../components/ContactForm.vue";
 
 const { brand, contact, services } = siteContent;
 ---
@@ -28,63 +29,8 @@ const { brand, contact, services } = siteContent;
       </div>
     </div>
 
-    <form data-reveal style="--reveal-delay: 120ms;" class="rounded-3xl border  border-gold-luxury/40 bg-[#0f0f0f] p-6 sm:p-8">
-      <div class="grid gap-4">
-        <label class="text-xs tracking-[0.14em] uppercase text-gold-luxury">{contact.form.nameLabel}</label>
-        <input
-          type="text"
-          name="name"
-          placeholder="Your full name"
-          class="rounded-xl border border-gold-luxury/45 bg-transparent px-4 py-3 text-sm text-white outline-none transition focus:border-gold-luxury"
-        />
-
-        <label class="text-xs tracking-[0.14em] uppercase text-gold-luxury">{contact.form.emailLabel}</label>
-        <input
-          type="email"
-          name="email"
-          placeholder="you@email.com"
-          class="rounded-xl border border-gold-luxury/45 bg-transparent px-4 py-3 text-sm text-white outline-none transition focus:border-gold-luxury"
-        />
-
-        <label class="text-xs tracking-[0.14em] uppercase text-gold-luxury">{contact.form.phoneLabel}</label>
-        <input
-          type="tel"
-          name="phone"
-          placeholder="+1 (___) ___-____"
-          class="rounded-xl border border-gold-luxury/45 bg-transparent px-4 py-3 text-sm text-white outline-none transition focus:border-gold-luxury"
-        />
-
-        <label class="text-xs tracking-[0.14em] uppercase text-gold-luxury">{contact.form.serviceLabel}</label>
-        <select
-          name="service"
-          class="rounded-xl border border-gold-luxury/45 bg-transparent px-4 py-3 text-sm text-white outline-none transition focus:border-gold-luxury"
-        >
-          <option value="" class="bg-ebony text-white">Select a service</option>
-          {
-            services.map((service) => (
-              <option value={service.id} class="bg-ebony text-white">
-                {service.title}
-              </option>
-            ))
-          }
-        </select>
-
-        <label class="text-xs tracking-[0.14em] uppercase text-gold-luxury">{contact.form.messageLabel}</label>
-        <textarea
-          name="message"
-          rows={4}
-          placeholder="Share your space goals, materials, and target completion date."
-          class="rounded-xl border border-gold-luxury/45 bg-transparent px-4 py-3 text-sm text-white outline-none transition focus:border-gold-luxury"
-        ></textarea>
-
-        <button
-          type="submit"
-          class="mt-2 inline-flex w-fit rounded-full border border-gold-luxury px-6 py-3 text-xs font-semibold tracking-[0.18em] uppercase text-gold-luxury transition hover:bg-gold-luxury/10 hover:shadow-[0_0_20px_rgba(212,175,55,0.28)]"
-        >
-          {contact.form.submitLabel}
-        </button>
-      </div>
-    </form>
+    <div data-reveal style="--reveal-delay: 120ms;">
+      <ContactForm client:visible formLabels={contact.form} services={services} />
+    </div>
   </div>
 </section>
-
