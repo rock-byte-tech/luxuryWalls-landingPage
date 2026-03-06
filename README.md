@@ -1,7 +1,7 @@
 # Luxury Walls Landing
 
 Landing page built with Astro + Tailwind.  
-The contact form is now a Vue component and sends leads to Brevo via a Netlify Function.
+The contact form is a Vue component and sends leads to Brevo using an Astro API route (`/api/contact`).
 
 ## Commands
 
@@ -16,8 +16,8 @@ pnpm preview
 
 - Frontend: `src/components/ContactForm.vue`
 - Section mount: `src/sections/Contact.astro`
-- Backend endpoint: `netlify/functions/contact.js`
-- Endpoint URL used by default: `/.netlify/functions/contact`
+- Backend endpoint: `src/pages/api/contact.ts`
+- Endpoint URL used by default: `/api/contact`
 
 ## Brevo Environment Variables
 
@@ -34,5 +34,5 @@ Local reference file:
 
 ## Local Testing Notes
 
-The form posts to a Netlify Function.  
-If you need to test the full submit flow locally, run with Netlify CLI (`netlify dev`) so `/.netlify/functions/contact` is available.
+The form posts to the Astro API route `/api/contact`.  
+For local testing, `pnpm dev` is enough.

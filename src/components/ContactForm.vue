@@ -101,7 +101,7 @@ const feedback = reactive({
   message: "",
 });
 
-const endpoint = props.endpoint || import.meta.env.PUBLIC_CONTACT_ENDPOINT || "/.netlify/functions/contact";
+const endpoint = props.endpoint || import.meta.env.PUBLIC_CONTACT_ENDPOINT || "/api/contact";
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const resetFeedback = () => {

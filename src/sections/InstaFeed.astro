@@ -18,33 +18,8 @@ const previewImages = services.slice(0, 3);
     </div>
 
     <div data-reveal style="--reveal-delay: 120ms;" class="glass-panel mx-auto mt-12 max-w-5xl rounded-3xl border border-white/15 p-6 sm:p-10">
-      <div class="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
-        <p class="max-w-2xl text-sm leading-relaxed text-white/80">
-          -- widget de instagram. Imagenes de prueba --
-        </p>
-        <a
-          href={instagram.url}
-          target="_blank"
-          rel="noreferrer"
-          class="inline-flex rounded-full border border-cyan-electric px-5 py-2 text-xs font-semibold tracking-[0.15em] uppercase text-cyan-electric transition hover:bg-cyan-electric/10 hover:shadow-[0_0_20px_rgba(0,195,227,0.35)]"
-        >
-          {instagram.ctaLabel}
-        </a>
-      </div>
-
-      <div class="mt-8 grid gap-4 sm:grid-cols-3">
-        {
-          previewImages.map((item, index) => (
-            <div
-              data-reveal
-              style={`--reveal-delay: ${180 + index * 80}ms;`}
-              class="overflow-hidden rounded-2xl border border-white/10 bg-black/30"
-            >
-              <img src={item.image} alt={item.alt} loading="lazy" class="h-44 w-full object-cover" />
-            </div>
-          ))
-        }
-      </div>
+      <script src="https://elfsightcdn.com/platform.js" async></script>
+      <div class="elfsight-app-c574bd26-6191-4dd8-8e6c-d5ddcac2136d" data-elfsight-app-lazy></div>
     </div>
   </div>
 </section>
