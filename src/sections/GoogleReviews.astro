@@ -1,0 +1,244 @@
+---
+import SectionTitle from "../components/SectionTitle.astro";
+
+const writeReviewUrl =
+  "https://search.google.com/local/writereview?placeid=ChIJA0U7ts7j2ogRQ49M5TWpsz4";
+const placeReviewsUrl =
+  "https://search.google.com/local/reviews?placeid=ChIJA0U7ts7j2ogRQ49M5TWpsz4";
+---
+
+<section
+  id="reviews"
+  class="relative isolate overflow-hidden bg-ebony py-24"
+  data-google-place-reviews-url={placeReviewsUrl}
+  data-google-write-review-url={writeReviewUrl}
+>
+  <div class="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
+    <div data-reveal>
+      <SectionTitle
+        eyebrow="Google Reviews"
+        title="What Our Clients Say"
+        description="Real feedback from our Google Business Profile."
+        align="center"
+      />
+    </div>
+
+    <p
+      class="mt-5 text-center text-sm text-smoke-white/80"
+      data-google-reviews-summary
+      data-reveal
+      style="--reveal-delay: 80ms;"
+    >
+      Loading Google reviews...
+    </p>
+
+    <div
+      class="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3"
+      data-google-reviews-grid
+      data-reveal
+      style="--reveal-delay: 120ms;"
+    >
+      <article class="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
+        <div class="h-4 w-24 rounded bg-white/15"></div>
+        <div class="mt-3 h-3 w-16 rounded bg-white/10"></div>
+        <div class="mt-4 space-y-2">
+          <div class="h-3 w-full rounded bg-white/10"></div>
+          <div class="h-3 w-5/6 rounded bg-white/10"></div>
+          <div class="h-3 w-4/6 rounded bg-white/10"></div>
+        </div>
+      </article>
+      <article class="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
+        <div class="h-4 w-24 rounded bg-white/15"></div>
+        <div class="mt-3 h-3 w-16 rounded bg-white/10"></div>
+        <div class="mt-4 space-y-2">
+          <div class="h-3 w-full rounded bg-white/10"></div>
+          <div class="h-3 w-5/6 rounded bg-white/10"></div>
+          <div class="h-3 w-4/6 rounded bg-white/10"></div>
+        </div>
+      </article>
+      <article class="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
+        <div class="h-4 w-24 rounded bg-white/15"></div>
+        <div class="mt-3 h-3 w-16 rounded bg-white/10"></div>
+        <div class="mt-4 space-y-2">
+          <div class="h-3 w-full rounded bg-white/10"></div>
+          <div class="h-3 w-5/6 rounded bg-white/10"></div>
+          <div class="h-3 w-4/6 rounded bg-white/10"></div>
+        </div>
+      </article>
+    </div>
+
+  </div>
+</section>
+
+<script is:inline>
+  (() => {
+    const grid = document.querySelector("[data-google-reviews-grid]");
+    const summary = document.querySelector("[data-google-reviews-summary]");
+    const section = document.querySelector("#reviews");
+    if (!grid || !summary || !section) return;
+    const REVIEW_PREVIEW_LIMIT = 180;
+    const placeReviewsUrl = section.getAttribute("data-google-place-reviews-url") || "#";
+    const writeReviewUrl = section.getAttribute("data-google-write-review-url") || "#";
+
+    const formatDate = (value) => {
+      if (!value) return "Recent";
+      const date = new Date(value);
+      if (Number.isNaN(date.getTime())) return "Recent";
+      return new Intl.DateTimeFormat("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+      }).format(date);
+    };
+
+    const starsForRating = (rating) => {
+      const safeRating = Math.max(0, Math.min(5, Math.round(Number(rating) || 0)));
+      return "*****".slice(0, safeRating) + "-----".slice(0, 5 - safeRating);
+    };
+
+    const createReviewCard = (review) => {
+      const card = document.createElement("article");
+      card.className =
+        "flex h-full flex-col rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition hover:-translate-y-1 hover:border-cyan-electric/45";
+
+      const authorLink = document.createElement("a");
+      authorLink.className = "text-sm font-semibold text-white transition hover:text-cyan-electric";
+      authorLink.textContent = review.author || "Google user";
+      authorLink.href = review.authorUrl || "#";
+      authorLink.target = "_blank";
+      authorLink.rel = "noopener noreferrer";
+
+      const stars = document.createElement("p");
+      stars.className = "mt-2 text-xs tracking-[0.18em] uppercase text-gold-luxury";
+      stars.textContent = `${starsForRating(review.rating)} ${Number(review.rating).toFixed(1)}`;
+
+      const fullText = String(review.text || "").trim();
+      const hasPreview = fullText.length > REVIEW_PREVIEW_LIMIT;
+      const previewText = hasPreview
+        ? `${fullText.slice(0, REVIEW_PREVIEW_LIMIT).trimEnd()}...`
+        : fullText;
+
+      const text = document.createElement("p");
+      text.className = "mt-4 text-sm leading-relaxed text-smoke-white/85";
+      text.textContent = previewText;
+
+      const toggleButton = document.createElement("button");
+      toggleButton.type = "button";
+      toggleButton.className =
+        "inline-flex items-center justify-center rounded-full border border-white/20 px-4 py-2 text-[10px] font-semibold tracking-[0.14em] uppercase text-white/80 transition hover:border-gold-luxury hover:text-gold-luxury";
+      toggleButton.textContent = "Read more";
+      toggleButton.setAttribute("aria-expanded", "false");
+
+      const date = document.createElement("p");
+      date.className = "mt-5 text-xs tracking-[0.16em] uppercase text-white/50";
+      date.textContent = formatDate(review.publishTime);
+
+      const viewButton = document.createElement("a");
+      viewButton.className =
+        "inline-flex items-center justify-center rounded-full border border-cyan-electric/70 bg-cyan-electric/10 px-4 py-2 text-[10px] font-semibold tracking-[0.14em] uppercase text-cyan-electric transition hover:bg-cyan-electric hover:text-ebony";
+      viewButton.href = review.reviewUrl || placeReviewsUrl;
+      viewButton.target = "_blank";
+      viewButton.rel = "noopener noreferrer";
+      viewButton.textContent = "Open in Google";
+      viewButton.setAttribute("aria-label", "Open full review on Google");
+
+      const actions = document.createElement("div");
+      actions.className = "mt-auto flex flex-wrap items-center gap-2 pt-5";
+
+      if (hasPreview) {
+        let expanded = false;
+        toggleButton.addEventListener("click", () => {
+          expanded = !expanded;
+          text.textContent = expanded ? fullText : previewText;
+          toggleButton.textContent = expanded ? "Show less" : "Read more";
+          toggleButton.setAttribute("aria-expanded", String(expanded));
+        });
+      }
+
+      card.append(authorLink, stars, text);
+      if (hasPreview) {
+        actions.append(toggleButton);
+      }
+      actions.append(viewButton);
+      card.append(date, actions);
+      return card;
+    };
+
+    const createActionsCard = () => {
+      const card = document.createElement("article");
+      card.className =
+        "flex h-full flex-col rounded-2xl border border-gold-luxury/30 bg-gradient-to-br from-gold-luxury/12 to-cyan-electric/10 p-6 backdrop-blur-sm";
+
+      const title = document.createElement("p");
+      title.className = "text-sm font-semibold uppercase tracking-[0.18em] text-white";
+      title.textContent = "Review Actions";
+
+      const description = document.createElement("p");
+      description.className = "mt-4 text-sm leading-relaxed text-smoke-white/85";
+      description.textContent = "Read all feedback on Google or leave your own review.";
+
+      const actions = document.createElement("div");
+      actions.className = "mt-auto flex flex-col gap-3 pt-6";
+
+      const viewAll = document.createElement("a");
+      viewAll.className =
+        "inline-flex items-center justify-center rounded-full border border-cyan-electric/70 bg-cyan-electric/10 px-4 py-2 text-[10px] font-semibold tracking-[0.14em] uppercase text-cyan-electric transition hover:bg-cyan-electric hover:text-ebony";
+      viewAll.href = placeReviewsUrl;
+      viewAll.target = "_blank";
+      viewAll.rel = "noopener noreferrer";
+      viewAll.textContent = "View all reviews";
+
+      const leaveReview = document.createElement("a");
+      leaveReview.className =
+        "inline-flex items-center justify-center rounded-full border border-gold-luxury bg-gold-luxury px-4 py-2 text-[10px] font-semibold tracking-[0.14em] uppercase text-ebony transition hover:bg-cyan-electric hover:text-white";
+      leaveReview.href = writeReviewUrl;
+      leaveReview.target = "_blank";
+      leaveReview.rel = "noopener noreferrer";
+      leaveReview.textContent = "Leave a review";
+
+      actions.append(viewAll, leaveReview);
+      card.append(title, description, actions);
+      return card;
+    };
+
+    const setError = (message) => {
+      summary.textContent = message;
+      grid.innerHTML = "";
+      const card = document.createElement("article");
+      card.className = "rounded-2xl border border-white/10 bg-white/5 p-6 text-sm text-smoke-white/75";
+      card.textContent =
+        "Google reviews are unavailable right now. Please try again in a few minutes.";
+      grid.append(card);
+      grid.append(createActionsCard());
+    };
+
+    fetch("/api/google-reviews", { headers: { Accept: "application/json" } })
+      .then(async (response) => {
+        const payload = await response.json();
+        if (!response.ok || !payload.ok) {
+          throw new Error(payload.error || "Unable to load Google reviews.");
+        }
+        return payload;
+      })
+      .then((payload) => {
+        const reviews = Array.isArray(payload.reviews) ? payload.reviews : [];
+        if (!reviews.length) {
+          setError("No Google reviews available yet.");
+          return;
+        }
+
+        const rating = typeof payload.rating === "number" ? payload.rating.toFixed(1) : "5.0";
+        const total = typeof payload.userRatingCount === "number" ? payload.userRatingCount : reviews.length;
+        summary.textContent = `${payload.placeName || "Google Business Profile"} - ${rating} stars from ${total} reviews`;
+
+        grid.innerHTML = "";
+        reviews.forEach((review) => {
+          grid.append(createReviewCard(review));
+        });
+        grid.append(createActionsCard());
+      })
+      .catch(() => {
+        setError("Google reviews are temporarily unavailable.");
+      });
+  })();
+</script>

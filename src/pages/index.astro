@@ -4,6 +4,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../sections/Hero.astro";
 import Services from "../sections/Services.astro";
 import InstaFeed from "../sections/InstaFeed.astro";
+import GoogleReviews from "../sections/GoogleReviews.astro";
 import Contact from "../sections/Contact.astro";
 import Footer from "../sections/Footer.astro";
 
@@ -15,7 +16,14 @@ const { meta } = siteContent;
     <Hero />
     <Services />
     <InstaFeed />
+    <GoogleReviews />
     <Contact />
     <Footer />
   </main>
+  <a
+    href="#contact"
+    class="fixed bottom-5 right-5 z-[2000] inline-flex items-center rounded-full border border-gold-luxury bg-gold-luxury px-6 py-3 text-xs font-semibold tracking-[0.2em] uppercase text-ebony shadow-[0_16px_36px_rgba(198,160,79,0.45)] transition hover:scale-105 hover:bg-cyan-electric hover:text-white hover:shadow-[0_18px_38px_rgba(0,195,227,0.35)] animate-pulse"
+  >
+    Free Estimate
+  </a>
 </BaseLayout>
